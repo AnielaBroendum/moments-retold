@@ -164,6 +164,8 @@ export default function HomePage() {
         throw new Error("Could not create canvas context");
       }
 
+      const safeCtx = ctx;
+
       const width = 1080;
       const height = 1350;
       canvas.width = width;
@@ -217,8 +219,8 @@ export default function HomePage() {
       });
 
       function drawFrame() {
-        ctx.fillStyle = "#f5f5f4";
-        ctx.fillRect(0, 0, width, height);
+        safeCtx.fillStyle = "#f5f5f4";
+        safeCtx.fillRect(0, 0, width, height);
 
         const imgAspect = image.width / image.height;
         const canvasAspect = width / height;
@@ -238,17 +240,17 @@ export default function HomePage() {
           dy = (height - drawHeight) / 2;
         }
 
-        ctx.drawImage(image, dx, dy, drawWidth, drawHeight);
+        safeCtx.drawImage(image, dx, dy, drawWidth, drawHeight);
 
-        ctx.fillStyle = "rgba(0,0,0,0.28)";
-        ctx.fillRect(0, height - 170, width, 170);
+        safeCtx.fillStyle = "rgba(0,0,0,0.28)";
+        safeCtx.fillRect(0, height - 170, width, 170);
 
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "600 44px sans-serif";
-        ctx.fillText("Every picture has a story", 60, height - 105);
+        safeCtx.fillStyle = "#ffffff";
+        safeCtx.font = "600 44px sans-serif";
+        safeCtx.fillText("Every picture has a story", 60, height - 105);
 
-        ctx.font = "28px sans-serif";
-        ctx.fillText(`Tone: ${tone}`, 60, height - 55);
+        safeCtx.font = "28px sans-serif";
+        safeCtx.fillText(`Tone: ${tone}`, 60, height - 55);
       }
 
       drawFrame();
