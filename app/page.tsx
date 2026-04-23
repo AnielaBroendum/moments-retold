@@ -527,7 +527,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="underline transition hover:text-[#7D2027]"
             >
-              Aniela Brøndum
+              Aniela Broendum
             </a>
           </p>
           <p className="mt-1 text-xs text-neutral-400">
